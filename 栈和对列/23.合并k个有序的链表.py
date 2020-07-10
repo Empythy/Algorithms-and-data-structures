@@ -20,11 +20,11 @@ class Solution:
                 lists[i] = lists[i].next
         head = tmp_head = ListNode(0)
         while heap:
-            val, idx = heapq.heappop(heap)
-            new_node = ListNode(val)
-            tmp_head.next = new_node
-            tmp_head = tmp_head.next
-            if lists[idx].next:
+            val, idx = heapq.heappop(heap)  # 每次pop最小的node值以及 链表index
+            new_node = ListNode(val) # 根据值new 一个node
+            tmp_head.next = new_node # 更改 临时节点的指向
+            tmp_head = tmp_head.next # 更新临时节点
+            if lists[idx] and lists[idx].next: #如果 node 还有下一个节点
                 heapq.heappush(heap, (lists[idx].next.val, idx))
                 lists[idx] = lists[idx].next
         return head.next
@@ -69,9 +69,9 @@ def print_list(head):
 
 
 if __name__ == "__main__":
-    l1 = "1->4->5"
-    l2 = "1->3->4"
-    l3 ="2->6"
+    l1 = "1->3"
+    l2 = "1"
+    l3 = "2"
     data = []
     for item in [l1,l2,l3]:
         tmp_head = create_list(item)
@@ -81,5 +81,7 @@ if __name__ == "__main__":
     print("=" * 30)
     for item in data:
         print_list(item)
-
-
+    print("=" * 30)
+    s = Solution()
+    ans = s.mergeKLists(data)
+    print_list(ans)

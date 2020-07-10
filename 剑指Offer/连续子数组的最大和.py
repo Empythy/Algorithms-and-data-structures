@@ -13,17 +13,15 @@ class Solution:
         if len(array) <= 0:
             return 0
         maxNum = None
-
         tmpNum = 0
+
         for item in array:
             if maxNum is None:
                 maxNum = item
-
             if tmpNum + item < item:
                 tmpNum = item
             else:
                 tmpNum += item
             if maxNum < tmpNum:
                 maxNum = tmpNum
-
         return maxNum

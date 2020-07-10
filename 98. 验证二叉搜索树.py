@@ -16,9 +16,7 @@ class Solution:
             # 判断 node.val 是否大于左子树  是否小于右子树
             if not node:
                 return True
-
             val = node.val
-
             if val <= lower or val > upper:
                 return False
 
@@ -31,18 +29,20 @@ class Solution:
 
         return helper(root)
 
-    def isValidBST1(self, root: TreeNode) -> bool:
+    def method(self, root):
+        if not root:
+            return True
+        pre_val = float('-inf')
 
-        def helper(node, lower, upper):
-            if not node:
-                return True
-            val = node.val
-
-            if val <= lower or val > upper:
-                return False
-
-            if helper(node.left, lower, val) and helper(node.right, val, upper):
-                return True
+        stack = []
+        node = root
+        while stack or node:
+            if node:
+                stack.append(node)
+                node = node.left
             else:
-                return False
-        return helper(root, float('-inf'), float('inf'))
+                node = stack.pop()
+                if node.val <= pre_val:
+                    return False
+                pre_val = node.val
+                node = node.right

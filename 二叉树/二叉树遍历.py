@@ -90,6 +90,7 @@ def non_cur_post_order(root):
             stack1.append(node.left)
         if node.right:
             stack1.append(node.right)
+
     while stack2:
         print(stack2.pop().val, end=" ")
 

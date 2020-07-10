@@ -8,9 +8,9 @@ class Solution:
     def findSubsequences1(self, nums: List[int]) -> List[List[int]]:
         res = []
         n = len(nums)
-        def dfs(start, tmp):
-            dic = {}  # 判断数字是否被使用  当前层
 
+        def dfs(start, tmp):
+            dic = {}   # 判断数字是否被使用  当前层
             if len(tmp) > 1:  # 满足条件
                 res.append(tmp)
 
@@ -58,3 +58,6 @@ ans1 = Solution().findSubsequences(nums)
 ans2 = Solution().findSubsequences1(nums)
 assert ans1 == ans2
 
+import random
+
+random.random

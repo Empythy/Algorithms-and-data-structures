@@ -8,8 +8,9 @@ def digitsum(n):
 
 class Solution:
     def movingCount(self, m: int, n: int, k: int) -> int:
-        visited = [[False] * n for _ in range(m)]
-
+        visited = [
+            [False] * n for _ in range(m)
+        ]
         def dfs(x, y):
             if x >= m or y >= n or digitsum(x) + digitsum(y) > k or visited[x][y]:
                 return 0

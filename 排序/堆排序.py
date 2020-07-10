@@ -1,8 +1,8 @@
 def heapify(arr, n, i):
     """
-    下沉调整调整节点
+    下沉调整调整节点  比较父节点和子节点的值的大小
     :param arr: 数组
-    :param n: 数组长度
+    :param n: 数组长度 调整的数组长度
     :param i: 调整元素当前的索引
     :return:
     """
@@ -16,8 +16,9 @@ def heapify(arr, n, i):
 
     if largest != i:
         arr[i], arr[largest] = arr[largest], arr[i]  # 交换
-        ## 递归的进行调整
+        # 递归的进行调整
         heapify(arr, n, largest)
+
 
 def heapSort(arr):
     n = len(arr)
@@ -31,10 +32,10 @@ def heapSort(arr):
         arr[i], arr[0] = arr[0], arr[i]  # 交换
         heapify(arr, i, 0)
 
-
-arr = [12, 11, 13, 5, 6, 7]
-heapSort(arr)
-n = len(arr)
-print("排序后")
-for i in range(n):
-    print("%d" % arr[i])
+if __name__ == '__main__':
+    arr = [12, 11, 13, 5, 6, 7]
+    heapSort(arr)
+    n = len(arr)
+    print("排序后")
+    for i in range(n):
+        print("%d" % arr[i])

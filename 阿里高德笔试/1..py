@@ -11,13 +11,13 @@ def solution(n, k, A):
     d = [(1, 0), (0, 1), (-1, 0), (0, -1)]
     res = [float("-inf")]
     used = [[False] * n for _ in range(n)]   # 注意初始化数组   [[False] * n] * n  不能直接这样初始化
-    @lru_cache(None)  # 有递归 
+
+    @lru_cache(None)  # 有递归
     def dfs(track, row, col):
-        for i in range(1, k + 1):
+        for i in range(1, k + 1): # 一次可以走多少步
             for tx, ty in d:
                 new_row = row + i * tx
                 new_col = col + i * ty
-
                 if 0 <= new_row < n and 0 <= new_col < n and \
                         not used[new_row][new_col] and \
                     A[new_row][new_col] > A[row][col]:
@@ -26,8 +26,6 @@ def solution(n, k, A):
                     dfs(track + (A[new_row][new_col],), new_row, new_col)
                     used[new_row][col] = False
                 else:
-                    # print(track)
-                    # print(used)
                     res[0] = max(res[0], sum(track))
     track = (A[0][0],)  #  注意 初始位置
     used[0][0] = True

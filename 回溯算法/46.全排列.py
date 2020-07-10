@@ -1,5 +1,6 @@
 import itertools
 from typing import List
+import random
 
 
 def permute(self, nums: List[int]) -> List[List[int]]:

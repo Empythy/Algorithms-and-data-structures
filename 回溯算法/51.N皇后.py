@@ -13,7 +13,7 @@ class Solution(object):
                     dfs(nums, row+1)
 
         def vilid(nums, row):
-            for i in range(row): #指前面的行
+            for i in range(row):  #指前面的行
                 if nums[i] == nums[row] or abs(nums[i] - nums[row]) == abs(i-row):
                     return False
             return True

@@ -16,16 +16,15 @@ from common import TreeNode
 非递归中序遍历
 """
 
-def is_bst(root) -> bool:
 
+def is_bst(root) -> bool:
     if not root:
         return True
-
 
     pre_val = float('-inf')
     stack = []
     node = root
-    while (stack or node):
+    while stack or node:
         if node:
             stack.append(node)
             node = node.left
@@ -44,19 +43,15 @@ def is_bst_recursive(root):
             return True
 
         if min_val < root.val < max_val:
-            return  helper(root.left, min_val, root.val) and \
-                    helper(root.right, root.val, max_val)
+            return helper(root.left, min_val, root.val) and \
+                   helper(root.right, root.val, max_val)
         else:
             return False
 
     return helper(root, float('-inf'), float('inf'))
 
 
-
 if __name__ == "__main__":
-
-
-
     head = TreeNode(4)
     head.left = TreeNode(2)
     head.right = TreeNode(6)

@@ -1,4 +1,3 @@
-
 class Solution(object):
 
     def __init__(self):
@@ -6,6 +5,7 @@ class Solution(object):
         self.max_heap = []
         self.res = []
         super().__init__()
+
     def medianSlidingWindow(self, nums, k):
         for i in range(len(nums)):
             self.addnum(nums[i])
@@ -52,7 +52,7 @@ class Solution(object):
         max_heap_top = -heapq.heappop(self.max_heap)
 
         heapq.heappush(self.min_heap, max_heap_top)
-        if len(self.max_heap) + len(self.min_heap) & 1: # 是否是奇数
+        if len(self.max_heap) + len(self.min_heap) & 1:  # 是否是奇数
             heapq.heappush(self.max_heap, -heapq.heappop(self.min_heap))
 
     def get_middle(self):
@@ -62,7 +62,9 @@ class Solution(object):
         else:
             return (-self.max_heap[0] + self.min_heap[0]) / 2
 
+
 import heapq
+
 
 class Solution1(object):
 
@@ -118,7 +120,7 @@ class Solution1(object):
         max_heap_top = -heapq.heappop(self.max_heap)
 
         heapq.heappush(self.min_heap, max_heap_top)
-        if len(self.max_heap) + len(self.min_heap) & 1: # 是否是奇数
+        if len(self.max_heap) + len(self.min_heap) & 1:  # 是否是奇数
             heapq.heappush(self.max_heap, -heapq.heappop(self.min_heap))
 
     def get_middle(self):
@@ -132,5 +134,5 @@ class Solution1(object):
 if __name__ == "__main__":
     nums = [1, 3, -1, -3, 5, 3, 6, 7]
     k = 3
-    s =Solution()
+    s = Solution()
     s.medianSlidingWindow(nums, k)
